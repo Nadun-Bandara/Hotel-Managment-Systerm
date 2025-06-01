@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerController">
+   <children>
+      <ImageView fitHeight="443.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/pexels-bluerhinomedia-2788792.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4c2b0a" height="43.0" stroke="BLACK" strokeType="INSIDE" width="601.0" />
+      <Label layoutX="126.0" layoutY="-2.0" prefHeight="45.0" prefWidth="347.0" text="Please fill in your details below" textFill="#fff200">
+         <font>
+            <Font name="Centaur" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="49.0" layoutY="94.0" text="Customer ID" textFill="WHITE">
+         <font>
+            <Font name="Candara" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="49.0" layoutY="135.0" text="Name" textFill="WHITE">
+         <font>
+            <Font name="Candara" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="49.0" layoutY="175.0" text="Contact Number" textFill="WHITE">
+         <font>
+            <Font name="Candara" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="49.0" layoutY="217.0" text="Loyalty  Points" textFill="WHITE">
+         <font>
+            <Font name="Candara" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtid" layoutX="264.0" layoutY="94.0" prefHeight="25.0" prefWidth="78.0" />
+      <TextField fx:id="txtname" layoutX="264.0" layoutY="135.0" prefHeight="25.0" prefWidth="211.0" />
+      <TextField fx:id="txtcontact" layoutX="264.0" layoutY="175.0" prefHeight="25.0" prefWidth="153.0" />
+      <TextField fx:id="txtpoints" layoutX="264.0" layoutY="217.0" prefHeight="25.0" prefWidth="105.0" />
+      <JFXButton layoutX="57.0" layoutY="290.0" onAction="#btnaddAction" prefHeight="25.0" prefWidth="62.0" style="-fx-background-color: blue;" text="Add" textFill="WHITE" />
+      <JFXButton layoutX="137.0" layoutY="290.0" onAction="#btnsearchAction" prefHeight="25.0" prefWidth="69.0" style="-fx-background-color: green;" text="Search" textFill="WHITE" />
+      <JFXButton layoutX="221.0" layoutY="290.0" onAction="#btnupdateAction" prefHeight="25.0" prefWidth="69.0" style="-fx-background-color: cyan;" text="Update" />
+      <JFXButton layoutX="306.0" layoutY="290.0" onAction="#btndeleteAction" prefHeight="25.0" prefWidth="69.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE" />
+      <JFXButton layoutX="536.0" layoutY="360.0" onAction="#btncancelAction" style="-fx-background-color: grey;" text="cancel" textFill="WHITE" />
+   </children>
+</AnchorPane>
