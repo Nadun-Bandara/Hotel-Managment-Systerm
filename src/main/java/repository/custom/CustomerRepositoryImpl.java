@@ -1,7 +1,8 @@
 package repository.custom;
 
-import repository.impl.CustomerRepository;
+import dto.Customer;
+import org.springframework.data.domain.Example;
 
-public class CustomerRepositoryImpl implements CustomerRepository {
+public class CustomerRepositoryImpl /*implements CustomerRepository*/{
 
 }

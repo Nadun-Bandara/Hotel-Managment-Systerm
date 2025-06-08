@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import dto.Customer;
+import util.CrudUtil;
 
 import java.io.IOException;
 import java.sql.*;
@@ -158,6 +159,5 @@ public class CustomerController{
         PreparedStatement stm=connection.prepareStatement("delete from customers where customer_id=?");
         stm.setInt(1,customer.getId());
         return  stm.executeUpdate()>0;
-
     }
 }

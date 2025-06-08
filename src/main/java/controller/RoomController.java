@@ -17,7 +17,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class RoomReservationController {
+public class RoomController {
     public TextField txtid;
     public TextField txtnumber;
     public JFXComboBox cmbtype;

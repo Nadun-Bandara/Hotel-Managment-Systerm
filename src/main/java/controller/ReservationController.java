@@ -1,5 +1,6 @@
 package controller;
 
+import com.jfoenix.controls.JFXButton;
 import db.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -37,6 +38,7 @@ public class ReservationController {
     public TableColumn coltype;
     public TableColumn colprice;
     public TableColumn colstatus;
+    public JFXButton btnAdd;
 
     public void initialize(){
         txtreservationID.setVisible(false);
@@ -53,6 +55,7 @@ public class ReservationController {
             alert.setHeaderText(null);
             alert.setContentText("Reservation Sucessfully!");
             alert.showAndWait();
+            btnAdd.setVisible(false);
         }else{
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Fail");
@@ -60,6 +63,7 @@ public class ReservationController {
             alert.setContentText("Error!");
             alert.showAndWait();
         }
+
     }
     public void btnsearchAction(ActionEvent actionEvent) throws SQLException {
         Reservation reservation=searchReservation();
@@ -153,6 +157,9 @@ public class ReservationController {
         LocalDate checkOutDate=checkoutPicker.getValue();
         Long daysCount=ChronoUnit.DAYS.between(checkInDate, checkOutDate);
         Double amount=daysCount*roomPrice;
+        Alert alert=new Alert(Alert.AlertType.INFORMATION,"Room Price\t:\t"+roomPrice+"\n"+"Days Countt\t:\t"+daysCount+"\n"+"Full Amount\t:\t"+amount);
+        alert.setTitle("Full Amount");
+        alert.show();
         txtamount.setText(String.valueOf(amount));
     }
     public void setStatus(){
@@ -173,13 +180,14 @@ public class ReservationController {
         LocalDate checkOutDate=checkoutPicker.getValue();
         Double amount=Double.parseDouble(txtamount.getText());
         String status=String.valueOf(txtstatus.getText());
-
-        if (cusId==null||roomId==null||checkInDate==null||checkOutDate==null||amount==null||status==null||amount<0){
+        LocalDate today=LocalDate.now();
+        if (cusId==null||roomId==null||checkInDate==null||checkOutDate==null||amount==null||status==null||amount<0 || checkInDate.isBefore(today)){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Fail");
             alert.setHeaderText(null);
-            alert.setContentText("Reservation Not Added Please check your inputs..!");
-            alert.showAndWait();
+            alert.setContentText("Reservation Not Added ! \nPlease check your inputs..!");
+            alert.show();
+            return false;
         }else {
         Connection connection=DBConnection.getInstance().getConnection();
         PreparedStatement stm=connection.prepareStatement("insert into reservations(customer_id,room_id,check_in_date,check_out_date,total_amount,reservation_status)values(?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
@@ -197,8 +205,8 @@ public class ReservationController {
                 txtreservationID.setText(String.valueOf(genId));
             }else {
                 return false;
+               }
             }
-        }
         }
         txtamount.setVisible(true);
         txtreservationID.setVisible(true);
