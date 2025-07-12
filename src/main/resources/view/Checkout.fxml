@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="root" prefHeight="566.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CheckoutController">
+   <children>
+      <ImageView fitHeight="518.0" fitWidth="391.0" layoutX="309.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/pexels-kindelmedia-6994291.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="57.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="601.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.8044164286050887">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.918467104434967" green="1.0" blue="0.021604938432574272" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Label layoutX="207.0" layoutY="-1.0" text="CheckOut">
+         <font>
+            <Font name="Century Gothic Bold" size="38.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.9968454025521263" startY="0.501577287066246">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9558641910552979" green="1.0" blue="0.11728394776582718" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Line endX="105.33334350585938" endY="-30.333328247070312" layoutX="299.0" layoutY="76.0" startX="-97.33335876464844" startY="-30.333328247070312" stroke="#fffb14" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="421.0" layoutX="322.0" layoutY="68.0" opacity="0.47" stroke="BLACK" strokeType="INSIDE" width="266.0" />
+      <TextField fx:id="txtAmount" layoutX="356.0" layoutY="338.0" promptText="Amout" />
+      <TextField fx:id="txtGustID" layoutX="356.0" layoutY="141.0" promptText="Guest ID" />
+      <TextField fx:id="txtReserID" layoutX="356.0" layoutY="94.0" promptText="Reservation ID" />
+      <TextField fx:id="txtRoomID" layoutX="356.0" layoutY="192.0" promptText="Room ID" />
+      <JFXButton layoutX="420.0" layoutY="410.0" onAction="#btnSubmitOnAction" style="-fx-background-color: yellow;" text="submit" />
+      <JFXButton layoutX="505.0" layoutY="410.0" onAction="#btnCancelOnAction" style="-fx-background-color: red;" text="cancel" />
+      <JFXButton layoutX="546.0" layoutY="531.0" onAction="#btnBackOnAction" style="-fx-background-color: grey;" text="back" textFill="WHITE" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="518.0" layoutY="56.0" stroke="BLACK" strokeType="INSIDE" width="309.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.8044164286050887" startY="0.501577287066246">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.918467104434967" green="1.0" blue="0.021604938432574272" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <ImageView fitHeight="187.0" fitWidth="255.0" layoutX="55.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/download%20(2).png" />
+         </image>
+      </ImageView>
+      <DatePicker fx:id="checkInPicker" layoutX="356.0" layoutY="243.0" prefHeight="25.0" prefWidth="149.0" promptText="Check in date" />
+      <DatePicker fx:id="checkoutPicker" layoutX="356.0" layoutY="295.0" prefHeight="25.0" prefWidth="149.0" promptText="Check out date" />
+      <JFXButton layoutX="519.0" layoutY="94.0" onAction="#btnSearchOnAction" style="-fx-background-color: blue;" text="search" textFill="WHITE" />
+   </children>
+</AnchorPane>

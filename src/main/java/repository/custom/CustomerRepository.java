@@ -1,7 +1,8 @@
 package repository.custom;
 
-import dto.Customer;
-import org.springframework.data.jpa.repository.JpaRepository;
+import entity.CustomerEntity;
+import repository.CrudRepository;
 
-public interface CustomerRepository extends JpaRepository<Customer,Integer> {
+public interface CustomerRepository extends CrudRepository<CustomerEntity,Integer> {
+
 }

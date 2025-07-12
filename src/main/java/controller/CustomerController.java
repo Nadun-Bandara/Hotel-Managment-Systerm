@@ -7,11 +7,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import dto.Customer;
 import util.CrudUtil;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.*;
 
 public class CustomerController{
@@ -19,6 +21,7 @@ public class CustomerController{
     public TextField txtname;
     public TextField txtcontact;
     public TextField txtpoints;
+    public AnchorPane root;
 
     public void initialize(){
         txtid.setVisible(false);
@@ -93,10 +96,11 @@ public class CustomerController{
     }
 
     public void btncancelAction(ActionEvent actionEvent) throws IOException {
-        Parent root= FXMLLoader.load(getClass().getResource("/view/HomePage.fxml"));
-        Stage stage=new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
+        URL resource=this.getClass().getResource("/view/HomePage.fxml");
+        assert resource !=null;
+        Parent load=FXMLLoader.load(resource);
+        this.root.getChildren().clear();
+        this.root.getChildren().add(load);
     }
 
     public boolean addCustomer() throws SQLException {

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="412.0" prefWidth="610.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReportController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="47.0" stroke="BLACK" strokeType="INSIDE" width="610.0">
+         <fill>
+            <RadialGradient centerX="0.5295203092793257" centerY="0.5347002913899226">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9333333373069763" green="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </fill></Rectangle>
+      <Label layoutX="189.0" layoutY="4.0" text="Genarated Reports" textFill="#fffe00">
+         <font>
+            <Font name="Bell MT Bold" size="30.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="365.0" layoutX="-7.0" layoutY="47.0" stroke="BLACK" strokeType="INSIDE" width="607.0" />
+      <JFXButton layoutX="64.0" layoutY="152.0" onAction="#btncustmerAction" prefHeight="81.0" prefWidth="96.0" style="-fx-background-color: yellow;" text="Customer">
+         <font>
+            <Font name="Bookman Old Style" size="12.0" />
+         </font></JFXButton>
+      <JFXButton layoutX="190.0" layoutY="152.0" onAction="#btnuserAction" prefHeight="81.0" prefWidth="96.0" style="-fx-background-color: yellow;" text="User" />
+      <JFXButton layoutX="316.0" layoutY="152.0" onAction="#btnreservationAction" prefHeight="81.0" prefWidth="96.0" style="-fx-background-color: yellow;" text="Reservation" />
+      <JFXButton layoutX="445.0" layoutY="152.0" onAction="#btnroomsAction" prefHeight="81.0" prefWidth="96.0" style="-fx-background-color: yellow;" text="Rooms" />
+      <JFXButton layoutX="477.0" layoutY="365.0" onAction="#btnCancelAction" prefHeight="22.0" prefWidth="54.0" style="-fx-background-color: grey;" text="cancel" textFill="WHITE" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="365.0" layoutX="550.0" layoutY="47.0" stroke="BLACK" strokeType="INSIDE" width="60.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.580441650908076" startY="0.4227129096864526">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.949999988079071" green="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="365.0" layoutX="-2.0" layoutY="47.0" stroke="BLACK" strokeType="INSIDE" width="60.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.580441650908076" startY="0.4227129096864526">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.949999988079071" green="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+   </children>
+</AnchorPane>

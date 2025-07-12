@@ -1,33 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="510.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReservationController">
+<AnchorPane fx:id="root" prefHeight="510.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReservationController">
    <children>
       <ImageView fitHeight="400.0" fitWidth="600.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/3926247.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cea684" height="55.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-      <Label layoutX="222.0" layoutY="2.0" text="Reservations">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="55.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="600.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9824561476707458" green="0.4421052634716034" opacity="0.5699999928474426" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
+      <Label layoutX="229.0" layoutY="3.0" text="Check In">
          <font>
-            <Font name="Centaur" size="34.0" />
+            <Font name="Eras Bold ITC" size="34.0" />
          </font>
       </Label>
-      <Rectangle fx:id="txtroomID" arcHeight="5.0" arcWidth="5.0" fill="#fae4cfb9" height="279.0" layoutX="22.0" layoutY="70.0" stroke="BLACK" strokeType="INSIDE" width="445.0" />
-      <TextField fx:id="txtreservationID" layoutX="211.0" layoutY="91.0" />
-      <TextField fx:id="txtcustomerID" layoutX="211.0" layoutY="128.0" text="Enter your ID" />
-      <TextField fx:id="txtroomId" layoutX="211.0" layoutY="163.0" text="Enter room ID" />
-      <DatePicker fx:id="checkInPicker" layoutX="211.0" layoutY="200.0" prefHeight="25.0" prefWidth="149.0" />
-      <DatePicker fx:id="checkoutPicker" layoutX="211.0" layoutY="234.0" prefHeight="25.0" prefWidth="149.0" />
-      <TextField fx:id="txtamount" layoutX="211.0" layoutY="270.0" />
-      <TextField fx:id="txtstatus" layoutX="211.0" layoutY="303.0" />
+      <Rectangle fx:id="txtroomID" arcHeight="5.0" arcWidth="5.0" fill="#fae4cfb9" height="279.0" layoutX="22.0" layoutY="64.0" stroke="BLACK" strokeType="INSIDE" width="445.0" />
+      <TextField fx:id="txtreservationID" layoutX="211.0" layoutY="91.0" promptText="Reservation ID" />
+      <TextField fx:id="txtroomId" layoutX="211.0" layoutY="163.0" promptText="Enter room ID" />
+      <DatePicker fx:id="checkInPicker" layoutX="211.0" layoutY="200.0" prefHeight="25.0" prefWidth="149.0" promptText="Check in date" />
+      <DatePicker fx:id="checkoutPicker" layoutX="211.0" layoutY="234.0" prefHeight="25.0" prefWidth="149.0" promptText="Check out date" />
+      <TextField fx:id="txtamount" layoutX="211.0" layoutY="270.0" promptText="Amount" />
       <Label layoutX="41.0" layoutY="95.0" text="Reservation ID">
          <font>
             <Font name="Cambria Math" size="17.0" />
@@ -67,9 +92,9 @@
       <JFXButton layoutX="487.0" layoutY="145.0" onAction="#btnsearchAction" prefHeight="35.0" prefWidth="72.0" style="-fx-background-color: green;" text="Search" textFill="WHITE" />
       <JFXButton layoutX="487.0" layoutY="195.0" onAction="#btnupdateAction" prefHeight="35.0" prefWidth="72.0" style="-fx-background-color: cyan;" text="Update" textFill="#0b0000" />
       <JFXButton layoutX="487.0" layoutY="241.0" onAction="#btndeleteAction" prefHeight="35.0" prefWidth="72.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE" />
-      <JFXButton layoutX="532.0" layoutY="371.0" onAction="#btncancelAction" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: grey;" text="cancel" textFill="WHITE" />
+      <JFXButton layoutX="532.0" layoutY="371.0" onAction="#btncancelAction" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: #353b48;" text="cancel" textFill="WHITE" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffe5cf" height="157.0" layoutY="399.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-      <TableView fx:id="tableRoom" layoutX="21.0" layoutY="360.0" prefHeight="163.0" prefWidth="445.0" style="-fx-background-color: #2c3e50;">
+      <TableView fx:id="tableRoom" layoutX="22.0" layoutY="363.0" prefHeight="163.0" prefWidth="445.0" style="-fx-background-color: #d1ccc0;">
         <columns>
           <TableColumn fx:id="colid" prefWidth="72.66665649414062" text="Room ID" />
           <TableColumn fx:id="colnumber" prefWidth="93.33331298828125" text="Room Number" />
@@ -78,6 +103,11 @@
             <TableColumn fx:id="colstatus" prefWidth="90.0" text="Status" />
         </columns>
       </TableView>
-      <JFXButton layoutX="176.0" layoutY="527.0" onAction="#btnreloadAction" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: blue;" text="Reload" textFill="WHITE" />
+      <JFXButton layoutX="202.0" layoutY="528.0" onAction="#btnreloadAction" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #0be881;" text="Reload" textFill="#260000" />
+      <Accordion />
+      <JFXComboBox fx:id="cmbStatus" layoutX="211.0" layoutY="304.0" promptText="Set Status" style="-fx-background-color: white;" />
+      <JFXComboBox fx:id="cmbCustomerIDS" focusColor="WHITE" layoutX="213.0" layoutY="128.0" prefHeight="25.0" prefWidth="149.0" promptText="Customer IDs" style="-fx-background-color: white;" />
+      <ButtonBar prefHeight="40.0" prefWidth="200.0" />
+      <JFXButton layoutX="391.0" layoutY="313.0" onAction="#btnCheckOutAction" style="-fx-background-color: blue;" text="Check Out" textFill="WHITE" />
    </children>
 </AnchorPane>

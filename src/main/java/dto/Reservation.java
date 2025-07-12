@@ -17,6 +17,10 @@ public class Reservation {
    private LocalDate checkindate;
    private LocalDate checkoutDate;
    private Double amount;
-   private String status;
+   private enum status{
+      CONFIRMED,
+      PENDING,
+      CANCELED
+   }
 
 }

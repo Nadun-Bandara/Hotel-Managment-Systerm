@@ -8,10 +8,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import dto.User;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.*;
 
 public class UserController {
@@ -19,6 +21,7 @@ public class UserController {
     public TextField txtrole;
     public PasswordField txtpassword;
     public TextField txtid;
+    public AnchorPane root;
 
     public void initialize(){
         txtid.setVisible(false);
@@ -87,10 +90,11 @@ public class UserController {
 
     public void btncancelAction(ActionEvent actionEvent) throws IOException {
         //System.exit(0);
-        Parent root= FXMLLoader.load(getClass().getResource("/view/HomePage.fxml"));
-        Stage stage=new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
+        URL resource=this.getClass().getResource("/view/HomePage.fxml");
+        assert resource !=null;
+        Parent load=FXMLLoader.load(resource);
+        this.root.getChildren().clear();
+        this.root.getChildren().add(load);
     }
 
     public boolean addUser()throws SQLException {

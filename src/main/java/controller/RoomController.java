@@ -2,20 +2,29 @@ package controller;
 
 import com.jfoenix.controls.JFXComboBox;
 import db.DBConnection;
+import dto.Room;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import dto.Room;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RoomController {
     public TextField txtid;
@@ -23,6 +32,13 @@ public class RoomController {
     public JFXComboBox cmbtype;
     public TextField txtprice;
     public TextField txtstatus;
+    public TableView tblRooms;
+    public TableColumn colRoomId;
+    public TableColumn colRoomNumber;
+    public TableColumn colType;
+    public TableColumn coPrice;
+    public TableColumn colSatus;
+    public AnchorPane root;
 
     public void initialize(){
         cmbtype.getItems().addAll("Single", "Double", "Suite");
@@ -107,7 +123,7 @@ public class RoomController {
         Double price=Double.parseDouble(txtprice.getText());
         String status=txtstatus.getText();
 
-        Connection connection=DBConnection.getInstance().getConnection();
+        Connection connection= DBConnection.getInstance().getConnection();
         PreparedStatement stm=connection.prepareStatement("insert into rooms(room_number,room_type, price_per_night,availability_status) values(?,?,?,?)");
         stm.setString(1,number);
         stm.setString(2,type);
@@ -135,14 +151,14 @@ public class RoomController {
     }
     public boolean update() throws SQLException {
         Room room=search();
-       Connection connection= DBConnection.getInstance().getConnection();
-       PreparedStatement stm=connection.prepareStatement("update rooms set room_number=?,room_type=?,price_per_night=?,availability_status=? where room_id=?");
-       stm.setString(1,txtnumber.getText());
-       stm.setString(2, (String) cmbtype.getValue());
-       stm.setDouble(3,Double.parseDouble(txtprice.getText()));
-       stm.setString(4,txtstatus.getText());
-       stm.setInt(5,room.getId());
-       return stm.executeUpdate()>0;
+        Connection connection= DBConnection.getInstance().getConnection();
+        PreparedStatement stm=connection.prepareStatement("update rooms set room_number=?,room_type=?,price_per_night=?,availability_status=? where room_id=?");
+        stm.setString(1,txtnumber.getText());
+        stm.setString(2, (String) cmbtype.getValue());
+        stm.setDouble(3,Double.parseDouble(txtprice.getText()));
+        stm.setString(4,txtstatus.getText());
+        stm.setInt(5,room.getId());
+        return stm.executeUpdate()>0;
     }
     public boolean delete() throws SQLException {
         Room room=search();
@@ -153,9 +169,50 @@ public class RoomController {
     }
 
     public void btncancelAction(ActionEvent actionEvent) throws IOException {
-        Parent root= FXMLLoader.load(getClass().getResource("/view/HomePage.fxml"));
-        Stage stage=new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
+        URL resource=this.getClass().getResource("/view/HomePage.fxml");
+        assert resource !=null;
+        Parent load=FXMLLoader.load(resource);
+        this.root.getChildren().clear();
+        this.root.getChildren().add(load);
     }
+
+    public void btnReloadAction(ActionEvent actionEvent) throws SQLException {
+        List<Room> roomList=roomList();
+        if(roomList==null){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Fail");
+            alert.setHeaderText(null);
+            alert.setContentText("Table is Empty!");
+            alert.showAndWait();
+        }
+        else {
+            colRoomId.setCellValueFactory(new PropertyValueFactory<>("id"));
+            colRoomNumber.setCellValueFactory(new PropertyValueFactory<>("Number"));
+            colType.setCellValueFactory(new PropertyValueFactory<>("Type"));
+            coPrice.setCellValueFactory(new PropertyValueFactory<>("Price"));
+            colSatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
+        }
+        ObservableList<Room>  roomObservableList= FXCollections.observableArrayList();
+        roomList.forEach(room->{
+            roomObservableList.add(room);
+        });
+        tblRooms.setItems(roomObservableList);
+    }
+
+    private List<Room> roomList() throws SQLException {
+        List<Room> roomList=new ArrayList<>();
+        PreparedStatement stm=DBConnection.getInstance().getConnection().prepareStatement("SELECT * FROM rooms");
+        ResultSet rs=stm.executeQuery();
+        while (rs.next()){
+            roomList.add(new Room(
+                    rs.getInt("room_id"),
+                    rs.getString("room_number"),
+                    rs.getString("room_type"),
+                    rs.getDouble("price_per_night"),
+                    rs.getString("availability_status")
+            ));
+        }
+        return roomList;
+    }
+
 }
